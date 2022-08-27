@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:earner_app/auth/on_bording_screen.dart';
+import 'package:earner_app/pages/select_user.dart';
 import 'package:flutter/material.dart';
 
 //import 'package:jobsearch/Screens/DashBoard.dart';
@@ -17,8 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const SelectUser()));
     });
   }
 
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/Icons/1min_Logo.png',
+              'assets/app2.png',
               height: 150,
             ),
           ],

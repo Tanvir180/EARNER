@@ -40,6 +40,7 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
+            Divider(indent: 16, endIndent: 16),
             ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
@@ -53,6 +54,7 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
+            Divider(indent: 16, endIndent: 16),
             ListTile(
               leading: Icon(
                 CupertinoIcons.mail_solid,
@@ -65,7 +67,8 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
+            Divider(indent: 16, endIndent: 16),
           ],
         ),
       ),

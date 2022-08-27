@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
             .then((uid) => {
                   Fluttertoast.showToast(msg: "Login Successful"),
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomePage())),
+                      MaterialPageRoute(builder: (context) =>  DashBoard())),
                 });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
