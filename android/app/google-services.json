@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "53984615490",
+        "project_id": "earnerapp-9380b",
+        "storage_bucket": "earnerapp-9380b.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:53984615490:android:537e638cea54dd0b5aa1db",
+            "android_client_info": {
+                "package_name": "com.example.earner_app"
+            }
+        },
+        "oauth_client": [{
+            "client_id": "53984615490-ksu2fs163sbdtisooc2guj07t8dkskbv.apps.googleusercontent.com",
+            "client_type": 3
+        }],
+        "api_key": [{
+            "current_key": "AIzaSyCcQE46gkocQc1MGFOgRrGe00EgoPkF-WE"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                        "client_id": "53984615490-ksu2fs163sbdtisooc2guj07t8dkskbv.apps.googleusercontent.com",
+                        "client_type": 3
+                    },
+                    {
+                        "client_id": "53984615490-m3gdnn5c2j0k2g3ufk6f661grqniu8qb.apps.googleusercontent.com",
+                        "client_type": 2,
+                        "ios_info": {
+                            "bundle_id": "com.example.earnerApp"
+                        }
+                    }
+                ]
+            }
+        }
+    }],
+    "configuration_version": "1"
+}
