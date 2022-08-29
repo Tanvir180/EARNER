@@ -16,8 +16,6 @@ import 'package:flutter/material.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 
-
-
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
@@ -53,15 +51,18 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Jobs Search", style: TextStyle(color: Colors.black),),
+        title: const Text(
+          "Jobs Search",
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
-        actions: [
-          const Padding(
+        actions: const [
+          Padding(
             padding: EdgeInsets.all(10.0),
-            child: const CircleAvatar(
+            child: CircleAvatar(
               backgroundImage: AssetImage("assets/Images/profile.png"),
             ),
           ),
@@ -80,7 +81,9 @@ class _DashBoardState extends State<DashBoard> {
               blurRadius: 25.0,
             )
           ],
-          borderRadius: const BorderRadius.only(topLeft: const Radius.circular(25), topRight: Radius.circular(25)),
+          borderRadius: const BorderRadius.only(
+              topLeft: const Radius.circular(25),
+              topRight: Radius.circular(25)),
           color: AppColors.white,
         ),
         child: BottomNavigationBar(
@@ -157,14 +160,12 @@ class _DashBoardState extends State<DashBoard> {
                       color: AppColors.grey)
                   .paddingTop(12),
               label: '',
-
               activeIcon: Image.asset('assets/Icons/Ic_Chat.png',
                       height: 24.66,
                       width: 24.66,
                       fit: BoxFit.cover,
                       color: AppColors.lightgreen)
                   .paddingTop(12),
-
             ),
           ],
           onTap: (val) {
