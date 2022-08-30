@@ -69,7 +69,7 @@ class _DashBoardState extends State<DashBoard> {
         ],
       ),
       drawer: const Drawer(
-        child: const MyDrawer(),
+        child: MyDrawer(),
       ),
       body: getFragment(),
       bottomNavigationBar: Container(
@@ -113,7 +113,7 @@ class _DashBoardState extends State<DashBoard> {
                       width: 24.66,
                       fit: BoxFit.cover,
                       color: AppColors.grey)
-                  .paddingTop(12),
+                  .paddingTop(20),
               label: '',
               activeIcon: Image.asset('assets/Icons/Ic_Alert.png',
                       height: 24.66,
