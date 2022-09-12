@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/user_model.dart';
@@ -49,10 +50,12 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+   
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Jobs Search",
+          "EARNER",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent,
@@ -72,6 +75,8 @@ class _DashBoardState extends State<DashBoard> {
         child: MyDrawer(),
       ),
       body: getFragment(),
+
+      //
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(

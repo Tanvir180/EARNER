@@ -92,7 +92,7 @@ class _AddWorkPageState extends State<AddWorkPage> {
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.account_circle),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Your Requiement",
+          hintText: "Job Requiement",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -169,9 +169,9 @@ class _AddWorkPageState extends State<AddWorkPage> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.password_sharp),
+          prefixIcon: const Icon(Icons.timelapse),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Image",
+          hintText: "Working Experience",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -193,9 +193,9 @@ class _AddWorkPageState extends State<AddWorkPage> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.password_sharp),
+          prefixIcon: const Icon(Icons.work_history_rounded),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Confirm Password",
+          hintText: "Working Period",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

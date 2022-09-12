@@ -1,4 +1,4 @@
-
+import 'dart:ui';
 
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/Jobs_Models.dart';
@@ -33,27 +33,36 @@ class MyStatelessWidget extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Container(
-            alignment: Alignment.center,
-            child: const Text('Job Type',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    color: Colors.white)),
-          ),
+          // title: Container(
+          //   alignment: Alignment.center,
+          //   child: const Text('Job Type',
+          //       textAlign: TextAlign.start,
+          //       style: TextStyle(
+          //           fontWeight: FontWeight.bold,
+          //           fontSize: 22,
+          //           color: Colors.white)),
+          // ),
           backgroundColor: Colors.blueGrey,
           toolbarHeight: 20,
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.party_mode),
+                child: Text(
+                  "Part Time",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               Tab(
-                icon: Icon(Icons.beach_access_sharp),
+                child: Text(
+                  "Remote Job",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               Tab(
-                icon: Icon(Icons.brightness_5_sharp),
+                child: Text(
+                  "Full Time",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
@@ -65,34 +74,20 @@ class MyStatelessWidget extends StatelessWidget {
                   body: ListView(
                 children: <Widget>[
                   const Card(
-                      child: const ListTile(
-                          title: const Text('One-line ListTile'))),
-                  const Card(
-                    elevation: 5,
-                    child: const ListTile(
-                      leading: FlutterLogo(),
-                      title: Text('One-line with leading widget'),
-                    ),
-                  ),
-                  const Card(
-                    child: const ListTile(
-                      title: const Text('One-line with trailing widget'),
-                      trailing: Icon(Icons.arrow_circle_right_rounded),
-                    ),
-                  ),
-                  Card(
+                    color: Colors.lightBlueAccent,
                     child: ListTile(
-                      leading: Image.asset("assets/Images/hridoy.jpg"),
-                      title: const Text('One-line with both widgets'),
-                      trailing: const Icon(Icons.more_vert),
+                      title: Center(
+                        child: Text(
+                          'Part Time Job',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const Card(
-                    child: const ListTile(
-                      title: const Text('One-line dense ListTile'),
-                      dense: true,
-                    ),
-                  ),
+                  SizedBox(height: 20),
                   Card(
                     elevation: 5,
                     child: ListTile(
@@ -155,28 +150,88 @@ class MyStatelessWidget extends StatelessWidget {
                       trailing: const Icon(Icons.arrow_circle_right_rounded),
                     ),
                   ),
+                ],
+              )),
+            ),
+            Center(
+              child: Scaffold(
+                  body: ListView(
+                children: <Widget>[
                   const Card(
+                    color: Colors.lightBlueAccent,
                     child: ListTile(
-                      title: Text('One-line dense ListTile'),
-                      dense: true,
+                      title: Center(
+                        child: Text(
+                          'Remote Job',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const Card(
-                    child: const ListTile(
-                      leading: const FlutterLogo(size: 56.0),
+                  SizedBox(height: 20),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
                       title: const Text('Two-line ListTile'),
-                      subtitle: Text('Here is a second line'),
-                      trailing: const Icon(Icons.more_vert),
+                      subtitle: const Text(
+                        'Here is a second line.\n A sufficiently long subtitle warrants three lines.',
+                        maxLines: 3,
+                      ),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
                     ),
                   ),
-                  const Card(
-                    child: const ListTile(
-                      leading: const FlutterLogo(size: 72.0),
-                      title: const Text('Three-line ListTile'),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
+                      title: const Text('Two-line ListTile'),
                       subtitle: const Text(
-                          'A sufficiently long subtitle warrants three lines.'),
-                      trailing: Icon(Icons.more_vert),
-                      isThreeLine: true,
+                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
+                      title: const Text('Two-line ListTile'),
+                      subtitle: const Text(
+                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
+                      title: const Text('Two-line ListTile'),
+                      subtitle: const Text(
+                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
+                      title: const Text('Two-line ListTile'),
+                      subtitle: const Text(
+                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.asset("assets/Images/hridoy.jpg"),
+                      title: const Text('Two-line ListTile'),
+                      subtitle: const Text(
+                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                      trailing: const Icon(Icons.arrow_circle_right_rounded),
                     ),
                   ),
                 ],
@@ -187,41 +242,29 @@ class MyStatelessWidget extends StatelessWidget {
                   body: ListView(
                 children: <Widget>[
                   const Card(
-                      child: const ListTile(
-                          title: const Text('One-line ListTile'))),
-                  const Card(
-                    elevation: 5,
-                    child: const ListTile(
-                      leading: FlutterLogo(),
-                      title: Text('One-line with leading widget'),
-                    ),
-                  ),
-                  const Card(
-                    child: const ListTile(
-                      title: const Text('One-line with trailing widget'),
-                      trailing: Icon(Icons.arrow_circle_right_rounded),
-                    ),
-                  ),
-                  Card(
+                    color: Colors.lightBlueAccent,
                     child: ListTile(
-                      leading: Image.asset("assets/Images/hridoy.jpg"),
-                      title: const Text('One-line with both widgets'),
-                      trailing: const Icon(Icons.more_vert),
+                      title: Center(
+                        child: Text(
+                          'Employee Hire',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const Card(
-                    child: const ListTile(
-                      title: const Text('One-line dense ListTile'),
-                      dense: true,
-                    ),
-                  ),
+                  SizedBox(height: 20),
                   Card(
                     elevation: 5,
                     child: ListTile(
                       leading: Image.asset("assets/Images/hridoy.jpg"),
                       title: const Text('Two-line ListTile'),
                       subtitle: const Text(
-                          'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
+                        'Here is a second line.\n A sufficiently long subtitle warrants three lines.',
+                        maxLines: 3,
+                      ),
                       trailing: const Icon(Icons.arrow_circle_right_rounded),
                     ),
                   ),
@@ -273,37 +316,10 @@ class MyStatelessWidget extends StatelessWidget {
                       subtitle: const Text(
                           'Here is a second line.\n A sufficiently long subtitle warrants three lines.'),
                       trailing: const Icon(Icons.arrow_circle_right_rounded),
-                    ),
-                  ),
-                  const Card(
-                    child: ListTile(
-                      title: Text('One-line dense ListTile'),
-                      dense: true,
-                    ),
-                  ),
-                  const Card(
-                    child: const ListTile(
-                      leading: const FlutterLogo(size: 56.0),
-                      title: const Text('Two-line ListTile'),
-                      subtitle: Text('Here is a second line'),
-                      trailing: const Icon(Icons.more_vert),
-                    ),
-                  ),
-                  const Card(
-                    child: const ListTile(
-                      leading: const FlutterLogo(size: 72.0),
-                      title: const Text('Three-line ListTile'),
-                      subtitle: const Text(
-                          'A sufficiently long subtitle warrants three lines.'),
-                      trailing: Icon(Icons.more_vert),
-                      isThreeLine: true,
                     ),
                   ),
                 ],
               )),
-            ),
-            Center(
-              child: Text("It's sunny here"),
             ),
           ],
         ),

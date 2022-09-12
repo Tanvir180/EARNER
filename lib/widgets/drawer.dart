@@ -82,28 +82,59 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             Divider(indent: 15, endIndent: 15),
+            ListTile(
+              leading: Icon(
+                CupertinoIcons.f_cursive_circle,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Feedback",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Divider(indent: 16, endIndent: 16),
+            ListTile(
+              leading: Icon(
+                CupertinoIcons.app_badge,
+                color: Colors.white,
+              ),
+              title: Text(
+                "About Us",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Divider(indent: 16, endIndent: 16),
             SizedBox(
-              height: 300,
+              height: 170,
             ),
             ListTile(
               // leading: const Icon(
               //   CupertinoIcons.archivebox_fill,
               //   color: Colors.red,
               // ),
-              title: MaterialButton(
-                onPressed: () {
-                  logout(context);
-                },
-                padding: EdgeInsets.all(20),
-                child: const Text(
-                  "Logout",
+              title: Container(
+                color: Colors.blueGrey,
+                child: MaterialButton(
+                  onPressed: () {
+                    logout(context);
+                  },
+                  padding: EdgeInsets.all(20),
+                  child: const Text(
+                    "Logout",
 
-                  //textAlign: TextAlign.center,
-                  style: TextStyle(
-                      backgroundColor: Colors.redAccent,
-                      fontSize: 22,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                    //textAlign: TextAlign.center,
+                    style: TextStyle(
+                        //backgroundColor: Colors.redAccent,
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
