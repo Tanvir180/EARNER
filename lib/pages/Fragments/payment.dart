@@ -1,10 +1,8 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
-
 
 class BookmarkScreen extends StatefulWidget {
   const BookmarkScreen({Key? key}) : super(key: key);
@@ -41,8 +39,8 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
                   paymentIntentClientSecret: paymentIntent!['client_secret'],
-                  // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
-                  // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
+                  //applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
+                  //googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
                   style: ThemeMode.dark,
                   merchantDisplayName: 'Hridoy'))
           .then((value) {});
@@ -105,7 +103,8 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
-          'Authorization': 'Bearer sk_test_51Lg8ZaEwHQ1skIbyGZfMZg6PDMPbgWZ8BSyGKdSEfAHXTzBrIeCws1I1QxRDhn7WoCZWB4l3cJAjrd2YpldFFsRG00bvW3gvm6',
+          'Authorization':
+              'Bearer sk_test_51Lg8ZaEwHQ1skIbyGZfMZg6PDMPbgWZ8BSyGKdSEfAHXTzBrIeCws1I1QxRDhn7WoCZWB4l3cJAjrd2YpldFFsRG00bvW3gvm6',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: body,

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/user_model.dart';
 import 'package:earner_app/pages/Fragments/AlertsScreen.dart';
-import 'package:earner_app/pages/Fragments/BookmarkScreen.dart';
+import 'package:earner_app/pages/Fragments/payment.dart';
 import 'package:earner_app/pages/Fragments/ChatScreen.dart';
 import 'package:earner_app/pages/Fragments/HomeScreen.dart';
 import 'package:earner_app/pages/Fragments/JobsScreen.dart';
@@ -36,7 +36,7 @@ class _DashBoardState extends State<DashBoard> {
     } else if (selectedIndex == 3) {
       return const BookmarkScreen();
     } else if (selectedIndex == 4) {
-      return const ChatScreen();
+      return const AddWorkPage();
     }
     return const HomeScreen();
   }
