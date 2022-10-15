@@ -1,3 +1,4 @@
+import 'package:earner_app/pages/Fragments_seller/login_page.dart';
 import 'package:earner_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 //import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -58,7 +59,7 @@ class _SelectUserState extends State<SelectUser> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const LoginPage(),
+              builder: (context) => const LoginPageseller(),
             ),
           );
         },

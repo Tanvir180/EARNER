@@ -6,14 +6,14 @@ import 'package:earner_app/model/Jobs_Models.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class JobsScreen extends StatefulWidget {
-  const JobsScreen({Key? key}) : super(key: key);
+class JobsScreenseller extends StatefulWidget {
+  const JobsScreenseller({Key? key}) : super(key: key);
 
   @override
-  State<JobsScreen> createState() => _JobsScreenState();
+  State<JobsScreenseller> createState() => _JobsScreensellerState();
 }
 
-class _JobsScreenState extends State<JobsScreen> {
+class _JobsScreensellerState extends State<JobsScreenseller> {
   // text fields' controllers
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();

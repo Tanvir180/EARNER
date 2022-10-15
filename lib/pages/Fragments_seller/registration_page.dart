@@ -6,14 +6,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class RegistrationPageseller extends StatefulWidget {
+  const RegistrationPageseller({Key? key}) : super(key: key);
 
   @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
+  State<RegistrationPageseller> createState() => _RegistrationPagesellerState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _RegistrationPagesellerState extends State<RegistrationPageseller> {
   final _auth = FirebaseAuth.instance;
 
   // string for displaying the error Message

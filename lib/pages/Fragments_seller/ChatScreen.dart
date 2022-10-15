@@ -5,14 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class AddWorkPage extends StatefulWidget {
-  const AddWorkPage({Key? key}) : super(key: key);
+class AddWorkPageseller extends StatefulWidget {
+  const AddWorkPageseller({Key? key}) : super(key: key);
 
   @override
-  State<AddWorkPage> createState() => _AddWorkPageState();
+  State<AddWorkPageseller> createState() => _AddWorkPagesellerState();
 }
 
-class _AddWorkPageState extends State<AddWorkPage> {
+class _AddWorkPagesellerState extends State<AddWorkPageseller> {
   TextEditingController _jobNameEditingController = TextEditingController();
   TextEditingController _descriptionEditingController = TextEditingController();
   TextEditingController _salaryEditingController = TextEditingController();

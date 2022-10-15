@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
 import 'package:earner_app/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,20 +10,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 
-class MyDrawer extends StatefulWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+class MyDrawerseller extends StatefulWidget {
+  const MyDrawerseller({Key? key}) : super(key: key);
 
   @override
-  State<MyDrawer> createState() => _MyDrawerState();
+  State<MyDrawerseller> createState() => _MyDrawersellerState();
 }
 
-class _MyDrawerState extends State<MyDrawer> {
+class _MyDrawersellerState extends State<MyDrawerseller> {
   Map<String, dynamic>? paymentIntent;
 
-
-   User? user = FirebaseAuth.instance.currentUser;
-   UserModel loggedInUser = UserModel();
-
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
 
   @override
   void initState() {
@@ -36,11 +35,6 @@ class _MyDrawerState extends State<MyDrawer> {
       setState(() {});
     });
   }
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +52,17 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.blueGrey,
                 ),
                 margin: EdgeInsets.all(0),
-                accountName:  Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  )),
-                accountEmail:  Text("${loggedInUser.email}",
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  )),
+                accountName:
+                    Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+                        style: const TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.w500,
+                        )),
+                accountEmail: Text("${loggedInUser.email}",
+                    style: const TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    )),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage("assets/app.png"),
                 ),
@@ -102,15 +97,40 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             Divider(indent: 16, endIndent: 16),
             ListTile(
+              // Row(
+              //             mainAxisAlignment: MainAxisAlignment.center,
+              //             children: <Widget>[
+              //               const Text("Don't have an account? "),
+
+              //                 child: const Text(
+              //                   "SignUp",
+              //                   style: TextStyle(
+              //                       color: Colors.redAccent,
+              //                       fontWeight: FontWeight.bold,
+              //                       fontSize: 18),
+              //                 ),
+              //               )
+              //             ])
+
               leading: Icon(
-                CupertinoIcons.mail_solid,
+                CupertinoIcons.info_circle_fill,
                 color: Colors.white,
               ),
-              title: Text(
-                "Email",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegistrationPageseller(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Add Info",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
