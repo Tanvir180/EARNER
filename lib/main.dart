@@ -1,9 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/auth/splash_screen.dart';
-import 'package:earner_app/model/user.dart';
-import 'package:earner_app/pages/login_page.dart';
-import 'package:earner_app/pages/select_user.dart';
-import 'package:earner_app/widgets/payment.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';

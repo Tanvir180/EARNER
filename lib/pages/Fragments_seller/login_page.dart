@@ -1,7 +1,5 @@
 import 'package:earner_app/pages/Fragments_seller/home_page.dart';
 import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
-import 'package:earner_app/pages/home_page.dart';
-import 'package:earner_app/pages/registration_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

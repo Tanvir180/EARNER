@@ -62,7 +62,7 @@ class _DashBoardsellerState extends State<DashBoardseller> {
           "EARNER",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.cyan,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,

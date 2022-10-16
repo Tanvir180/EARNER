@@ -51,6 +51,7 @@ dependencies:
   url_launcher: ^6.1.6
   curved_navigation_bar: ^1.0.3
   uuid: ^3.0.6
+  flutter_text_viewer: ^0.0.1
 
 
 dev_dependencies:
