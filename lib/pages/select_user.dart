@@ -177,10 +177,10 @@ class _SelectUserState extends State<SelectUser> with TickerProviderStateMixin {
           children: [
             CachedNetworkImage(
               imageUrl: loginUrlImage,
-              placeholder: ((context, url) => Image.asset(
-                    'assets/Images/wallpaper.jpg',
-                    fit: BoxFit.fill,
-                  )),
+              // placeholder: ((context, url) => Image.asset(
+              //       'assets/Images/wallpaper.jpg',
+              //       fit: BoxFit.fill,
+              //     )),
               errorWidget: (context, url, error) => const Icon(Icons.error),
               width: double.infinity,
               height: double.infinity,

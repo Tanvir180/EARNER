@@ -50,15 +50,13 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-   
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "EARNER",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blueGrey,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,

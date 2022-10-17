@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/Jobs_Models.dart';
+import 'package:earner_app/pages/aboutus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -152,8 +153,22 @@ class _JobsScreenState extends State<JobsScreen> {
                     elevation: 5,
                     child: ListTile(
                       leading: Image.asset("assets/Images/app.png"),
-                      title: Text(documentSnapshot['type']),
-                      subtitle: Text(documentSnapshot['description']),
+                      title: Text(
+                        documentSnapshot['type'],
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      subtitle: Text(
+                        documentSnapshot['description'],
+                        maxLines: 4,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AboutUs(),
+                          ),
+                        );
+                      },
                       trailing: SizedBox(
                         width: 100,
                         child: Row(

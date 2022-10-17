@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/feedbacksee.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,19 @@ class ProfileSeller extends StatefulWidget {
 class _ProfileSellerState extends State<ProfileSeller> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+
+  // text fields' controllers
+  final TextEditingController _typeController = TextEditingController();
+
+  final CollectionReference _jobs =
+      FirebaseFirestore.instance.collection('feedback');
+
+  Future<void> _delete(String productId) async {
+    await _jobs.doc(productId).delete();
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('You have successfully deleted a feedback')));
+  }
 
   @override
   void initState() {
@@ -148,15 +162,26 @@ class _ProfileSellerState extends State<ProfileSeller> {
                                             blurRadius: 2.0,
                                             offset: Offset(0.0, 1.0))
                                       ]),
-                                  child: const Center(
-                                    child: Text('FOLLOW ME',
-                                        style: TextStyle(
-                                            fontSize: 12.0,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold)),
+                                  child: Center(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const FeedBackSee(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text('FeedBack',
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         )

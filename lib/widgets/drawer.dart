@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/Fragments_seller/profileSeller.dart';
+import 'package:earner_app/pages/aboutus.dart';
+import 'package:earner_app/pages/feedback.dart';
+import 'package:earner_app/pages/home_page.dart';
 import 'package:earner_app/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,10 +23,8 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   Map<String, dynamic>? paymentIntent;
 
-
-   User? user = FirebaseAuth.instance.currentUser;
-   UserModel loggedInUser = UserModel();
-
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
 
   @override
   void initState() {
@@ -36,11 +38,6 @@ class _MyDrawerState extends State<MyDrawer> {
       setState(() {});
     });
   }
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +55,17 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.blueGrey,
                 ),
                 margin: EdgeInsets.all(0),
-                accountName:  Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  )),
-                accountEmail:  Text("${loggedInUser.email}",
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  )),
+                accountName:
+                    Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+                        style: const TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.w500,
+                        )),
+                accountEmail: Text("${loggedInUser.email}",
+                    style: const TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    )),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage("assets/app.png"),
                 ),
@@ -78,53 +76,69 @@ class _MyDrawerState extends State<MyDrawer> {
                 CupertinoIcons.home,
                 color: Colors.white,
               ),
-              title: Text(
-                "Home",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashBoard(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Home",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             Divider(indent: 16, endIndent: 16),
             ListTile(
               leading: Icon(
-                CupertinoIcons.profile_circled,
+                CupertinoIcons.person_crop_circle,
                 color: Colors.white,
               ),
-              title: Text(
-                "Profile",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Divider(indent: 16, endIndent: 16),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.mail_solid,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Email",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileSeller(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Profile",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             Divider(indent: 15, endIndent: 15),
             ListTile(
               leading: Icon(
-                CupertinoIcons.f_cursive_circle,
+                CupertinoIcons.f_cursive_circle_fill,
                 color: Colors.white,
               ),
-              title: Text(
-                "Feedback",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FeedBack(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "FeedBack",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -134,17 +148,27 @@ class _MyDrawerState extends State<MyDrawer> {
                 CupertinoIcons.app_badge,
                 color: Colors.white,
               ),
-              title: Text(
-                "About Us",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutUs(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "About Us",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             Divider(indent: 16, endIndent: 16),
             SizedBox(
-              height: 170,
+              height: 220,
             ),
             ListTile(
               // leading: const Icon(

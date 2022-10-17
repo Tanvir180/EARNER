@@ -39,11 +39,11 @@ class _AddWorkPagesellerState extends State<AddWorkPageseller> {
     var currentUser = _auth.currentUser;
 
     CollectionReference _collectionRef =
-        FirebaseFirestore.instance.collection("users-form-data");
+        FirebaseFirestore.instance.collection("jobs");
     return _collectionRef
         .doc() //currentUser!.email
         .set({
-          "jobname": _jobNameEditingController.text,
+          "type": _jobNameEditingController.text,
           "description": _descriptionEditingController.text,
           "salary": _salaryEditingController.text,
           "workingPeriod": _imageEditingController.text,

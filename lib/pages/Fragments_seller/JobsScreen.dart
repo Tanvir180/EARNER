@@ -152,8 +152,14 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
                     elevation: 5,
                     child: ListTile(
                       leading: Image.asset("assets/Images/app.png"),
-                      title: Text(documentSnapshot['type']),
-                      subtitle: Text(documentSnapshot['description']),
+                      title: Text(
+                        documentSnapshot['type'],
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      subtitle: Text(
+                        documentSnapshot['description'],
+                        maxLines: 4,
+                      ),
                       trailing: SizedBox(
                         width: 100,
                         child: Row(

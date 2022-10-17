@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/Fragments_seller/home_page.dart';
 import 'package:earner_app/pages/Fragments_seller/profileSeller.dart';
 import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
 import 'package:earner_app/pages/aboutus.dart';
+import 'package:earner_app/pages/feedback.dart';
 import 'package:earner_app/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -75,11 +77,21 @@ class _MyDrawersellerState extends State<MyDrawerseller> {
                 CupertinoIcons.home,
                 color: Colors.white,
               ),
-              title: Text(
-                "Home",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashBoardseller(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Home",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -110,14 +122,24 @@ class _MyDrawersellerState extends State<MyDrawerseller> {
             Divider(indent: 15, endIndent: 15),
             ListTile(
               leading: Icon(
-                CupertinoIcons.f_cursive_circle,
+                CupertinoIcons.f_cursive_circle_fill,
                 color: Colors.white,
               ),
-              title: Text(
-                "Feedback",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FeedBack(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "FeedBack",
+                  textScaleFactor: 1.2,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
