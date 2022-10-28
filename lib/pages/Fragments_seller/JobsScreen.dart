@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/Jobs_Models.dart';
+import 'package:earner_app/widgets/product_details.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
 class JobsScreenseller extends StatefulWidget {
@@ -17,7 +20,7 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
   // text fields' controllers
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-
+  final TextEditingController _salaryController = TextEditingController();
   final CollectionReference _jobs =
       FirebaseFirestore.instance.collection('jobs');
 
@@ -74,6 +77,7 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
     if (documentSnapshot != null) {
       _typeController.text = documentSnapshot['type'];
       _descriptionController.text = documentSnapshot['decription'];
+      _salaryController.text = documentSnapshot['salary'];
     }
 
     await showModalBottomSheet(
@@ -148,29 +152,37 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
                 itemBuilder: (context, index) {
                   final DocumentSnapshot documentSnapshot =
                       streamSnapshot.data!.docs[index];
-                  return Card(
-                    elevation: 5,
-                    child: ListTile(
-                      leading: Image.asset("assets/Images/app.png"),
-                      title: Text(
-                        documentSnapshot['type'],
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      subtitle: Text(
-                        documentSnapshot['description'],
-                        maxLines: 4,
-                      ),
-                      trailing: SizedBox(
-                        width: 100,
-                        child: Row(
-                          children: [
-                            IconButton(
-                                icon: const Icon(Icons.edit),
-                                onPressed: () => _update(documentSnapshot)),
-                            IconButton(
-                                icon: const Icon(Icons.delete),
-                                onPressed: () => _delete(documentSnapshot.id)),
-                          ],
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ProductDetails(documentSnapshot))),
+                    child: Card(
+                      color: Colors.grey,
+                      elevation: 7,
+                      child: ListTile(
+                        leading: Image.asset("assets/Images/app.png"),
+                        title: Text(
+                          documentSnapshot['type'],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        subtitle: Text(
+                          documentSnapshot['description'],
+                          maxLines: 4,
+                        ),
+                        trailing: SizedBox(
+                          width: 100,
+                          child: Row(
+                            children: [
+                              IconButton(
+                                  icon: const Icon(Icons.edit),
+                                  onPressed: () => _update(documentSnapshot)),
+                              IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () =>
+                                      _delete(documentSnapshot.id)),
+                            ],
+                          ),
                         ),
                       ),
                     ),
