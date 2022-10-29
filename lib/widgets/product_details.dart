@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductDetails extends StatefulWidget {
   var _product;
+
   ProductDetails(this._product);
   // const ProductDetails({super.key});
 
@@ -14,6 +17,8 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
+    var phone = widget._product['phone'];
+    var email = widget._product['email'];
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -43,26 +48,83 @@ class _ProductDetailsState extends State<ProductDetails> {
               style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
             ),
             SizedBox(
-              height: 150,
+              height: 200,
             ),
             Divider(),
-            SizedBox(
-              width: 200,
-              height: 80,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "Email",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
+            Row(
+              children: [
+                SizedBox(
+                  width: 15,
                 ),
-                style: ElevatedButton.styleFrom(
-                  //primary: AppColors.deep_orange,
-                  elevation: 3,
+                SizedBox(
+                  width: 150,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      String? encodeQueryParameters(
+                          Map<String, String> params) {
+                        return params.entries
+                            .map((MapEntry<String, String> e) =>
+                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                            .join('&');
+                      }
+
+// ···
+                      final Uri emailLaunchUri = Uri(
+                        scheme: 'mailto',
+                        path: '$email',
+                        query: encodeQueryParameters(<String, String>{
+                          'subject': 'Application For Job',
+                        }),
+                      );
+
+                      launchUrl(emailLaunchUri);
+                    },
+                    child: Text(
+                      "Email",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      //primary: AppColors.deep_orange,
+                      elevation: 3,
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 40,
+                ),
+                SizedBox(
+                  width: 150,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      final Uri callLaunchUri = Uri(
+                        scheme: 'tel',
+                        path: '$phone',
+                        // queryParameters: <String, String>{
+                        //   'body': Uri.encodeComponent('Example Subject & Symbols are allowed!'),
+                        // },
+                      );
+                      launchUrl(callLaunchUri);
+                    },
+                    child: Text(
+                      "CALL",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      //primary: AppColors.deep_orange,
+                      foregroundColor: Colors.blueGrey,
+                      elevation: 3,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

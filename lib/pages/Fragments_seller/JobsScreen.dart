@@ -21,6 +21,11 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _salaryController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _qualificationController =
+      TextEditingController();
+  final TextEditingController _experienceController = TextEditingController();
   final CollectionReference _jobs =
       FirebaseFirestore.instance.collection('jobs');
 
@@ -31,7 +36,7 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
         builder: (BuildContext ctx) {
           return Padding(
             padding: EdgeInsets.only(
-                top: 20,
+                top: 0,
                 left: 20,
                 right: 20,
                 bottom: MediaQuery.of(ctx).viewInsets.bottom + 20),
@@ -41,29 +46,87 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
               children: [
                 TextField(
                   controller: _typeController,
-                  decoration: const InputDecoration(labelText: 'type'),
+                  decoration: const InputDecoration(labelText: 'Job Title'),
                 ),
                 TextField(
                   // keyboardType:
                   // const TextInputType.numberWithOptions(decimal: true),
                   controller: _descriptionController,
                   decoration: const InputDecoration(
-                    labelText: 'descriptipn',
+                    labelText: 'Descriptipn',
+                  ),
+                ),
+                TextField(
+                  // keyboardType:
+                  // const TextInputType.numberWithOptions(decimal: true),
+                  controller: _salaryController,
+                  decoration: const InputDecoration(
+                    labelText: 'Salary',
+                  ),
+                ),
+                TextField(
+                  // keyboardType:
+                  // const TextInputType.numberWithOptions(decimal: true),
+                  controller: _emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Your Email',
+                  ),
+                ),
+                TextField(
+                  // keyboardType:
+                  // const TextInputType.numberWithOptions(decimal: true),
+                  controller: _phoneController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter your Phone Number',
+                  ),
+                ),
+                TextField(
+                  // keyboardType:
+                  // const TextInputType.numberWithOptions(decimal: true),
+                  controller: _qualificationController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Qualification and Skill Required',
+                  ),
+                ),
+                TextField(
+                  // keyboardType:
+                  // const TextInputType.numberWithOptions(decimal: true),
+                  controller: _experienceController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Experience Required',
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 ElevatedButton(
                   child: const Text('Create'),
                   onPressed: () async {
                     final String type = _typeController.text;
                     final String description = _descriptionController.text;
+                    final String salary = _salaryController.text;
+                    final String email = _emailController.text;
+                    final String phone = _phoneController.text;
+                    final String qualification = _qualificationController.text;
+                    final String experience = _experienceController.text;
 
-                    await _jobs.add({"type": type, "description": description});
+                    await _jobs.add({
+                      "type": type,
+                      "description": description,
+                      "salary": salary,
+                      "email": email,
+                      "phone": phone,
+                      "qualification": qualification,
+                      "experience": experience,
+                    });
 
                     _typeController.text = '';
                     _descriptionController.text = '';
+                    _salaryController.text = '';
+                    _emailController.text = '';
+                    _phoneController.text = '';
+                    _qualificationController.text = '';
+                    _experienceController.text = '';
                     Navigator.of(context).pop();
                   },
                 )
@@ -78,6 +141,10 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
       _typeController.text = documentSnapshot['type'];
       _descriptionController.text = documentSnapshot['decription'];
       _salaryController.text = documentSnapshot['salary'];
+      _phoneController.text = documentSnapshot['phone'];
+      _emailController.text = documentSnapshot['email'];
+      _experienceController.text = documentSnapshot['experience'];
+      _qualificationController.text = documentSnapshot['qualification'];
     }
 
     await showModalBottomSheet(
