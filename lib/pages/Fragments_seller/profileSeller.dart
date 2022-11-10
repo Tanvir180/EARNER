@@ -69,8 +69,10 @@ class _ProfileSellerState extends State<ProfileSeller> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage:
-                                const AssetImage('assets/Images/app.png'),
+                            backgroundImage: NetworkImage(
+                              "${loggedInUser.img}",
+                              
+                            ),
                             radius: _height / 10,
                           ),
                           SizedBox(

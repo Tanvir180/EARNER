@@ -67,7 +67,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       fontWeight: FontWeight.w500,
                     )),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/app.png"),
+                  backgroundImage: NetworkImage("${loggedInUser.img}"),
                 ),
               ),
             ),

@@ -6,6 +6,7 @@ class UserModel {
   String? qualification;
   String? experience;
   String? address;
+  String? img;
 
   UserModel(
       {this.uid,
@@ -14,7 +15,8 @@ class UserModel {
       this.secondName,
       this.address,
       this.experience,
-      this.qualification});
+      this.qualification,
+      this.img});
 
   // receiving data from server
   factory UserModel.fromMap(map) {
@@ -26,6 +28,7 @@ class UserModel {
       qualification: map['qualification'],
       experience: map['experience'],
       address: map['address'],
+      img: map['img'],
     );
   }
 
@@ -39,6 +42,7 @@ class UserModel {
       'qualification': qualification,
       'experience': experience,
       'address': address,
+      'img': img,
     };
   }
 }

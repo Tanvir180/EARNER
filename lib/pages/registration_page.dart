@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
 import 'package:earner_app/pages/Fragments_seller/home_page.dart';
 import 'package:earner_app/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -14,6 +18,11 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  File? _image;
+  final imagePicker = ImagePicker();
+  String? url;
+  String? _fileName;
+
   final _auth = FirebaseAuth.instance;
 
   // string for displaying the error Message
@@ -30,6 +39,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final qualificationEditingController = new TextEditingController();
   final experienceEditingController = new TextEditingController();
   final addressEditingController = new TextEditingController();
+  final imgEditingController = new TextEditingController();
+
+  Future uploadimg() async {
+    Reference ref = FirebaseStorage.instance.ref('user/').child('$_fileName');
+    await ref.putFile(_image!);
+    url = await ref.getDownloadURL();
+    print(url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -240,6 +257,58 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ));
 
+    final addSpace = Container(
+        width: 250,
+        height: 250,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                  child: _image == null
+                      ? const Center(
+                          child: Text("Select the item image"),
+                        )
+                      : Image.file(_image!))
+            ],
+          ),
+        ));
+
+    final addButton = ElevatedButton(
+      onPressed: () async {
+        final pick = await imagePicker.pickImage(source: ImageSource.gallery);
+        setState(() {
+          if (pick != null) {
+            _image = File(pick.path);
+            _fileName = pick.name;
+            if (_image != null) {
+              uploadimg().whenComplete(() => SnackBar(
+                    content: Text("Picture is selected"),
+                    duration: Duration(milliseconds: 400),
+                  ));
+            }
+          } else {
+            final snackBar = SnackBar(
+              content: Text("No image selected"),
+              duration: Duration(milliseconds: 400),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+        });
+      },
+      style: ElevatedButton.styleFrom(primary: Colors.grey),
+      child: Text(
+        "Add Image",
+        style: TextStyle(
+          fontSize: 15,
+          color: Colors.white,
+        ),
+      ),
+    );
+    //
     //signup button
     final signUpButton = Material(
       elevation: 5,
@@ -307,6 +376,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     const SizedBox(height: 20),
                     confirmPasswordField,
                     const SizedBox(height: 20),
+                    addSpace,
+                    const SizedBox(height: 20),
+                    addButton,
+                    const SizedBox(height: 20),
                     signUpButton,
                     const SizedBox(height: 15),
                   ],
@@ -361,7 +434,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
     // calling our firestore
     // calling our user model
     // sedning these values
-
+    Reference ref = FirebaseStorage.instance.ref('user/').child('$_fileName');
+    await ref.putFile(_image!);
+    url = await ref.getDownloadURL();
+    print(url);
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
 
@@ -375,6 +451,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     userModel.qualification = qualificationEditingController.text;
     userModel.experience = experienceEditingController.text;
     userModel.address = addressEditingController.text;
+    userModel.img = url;
 
     await firebaseFirestore
         .collection("users")

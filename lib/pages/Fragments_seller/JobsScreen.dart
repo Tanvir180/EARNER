@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,9 +6,12 @@ import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/Jobs_Models.dart';
 import 'package:earner_app/widgets/product_details.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+
+import 'package:image_picker/image_picker.dart';
 
 class JobsScreenseller extends StatefulWidget {
   const JobsScreenseller({Key? key}) : super(key: key);
@@ -17,6 +21,11 @@ class JobsScreenseller extends StatefulWidget {
 }
 
 class _JobsScreensellerState extends State<JobsScreenseller> {
+  File? _image;
+  final imagePicker = ImagePicker();
+  String? url;
+  String? _fileName;
+
   // text fields' controllers
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
@@ -26,6 +35,16 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
   final TextEditingController _qualificationController =
       TextEditingController();
   final TextEditingController _experienceController = TextEditingController();
+  final TextEditingController _imgController = TextEditingController();
+
+  Future uploadimg() async {
+    Reference ref =
+        FirebaseStorage.instance.ref('products/').child('$_fileName');
+    await ref.putFile(_image!);
+    url = await ref.getDownloadURL();
+    print(url);
+  }
+
   final CollectionReference _jobs =
       FirebaseFirestore.instance.collection('jobs');
 
@@ -34,103 +53,212 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
         isScrollControlled: true,
         context: context,
         builder: (BuildContext ctx) {
-          return Padding(
-            padding: EdgeInsets.only(
-                top: 0,
-                left: 20,
-                right: 20,
-                bottom: MediaQuery.of(ctx).viewInsets.bottom + 20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: _typeController,
-                  decoration: const InputDecoration(labelText: 'Job Title'),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _descriptionController,
-                  decoration: const InputDecoration(
-                    labelText: 'Descriptipn',
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: 0,
+                  left: 20,
+                  right: 20,
+                  bottom: MediaQuery.of(ctx).viewInsets.bottom + 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Please Fill The Document",
                   ),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _salaryController,
-                  decoration: const InputDecoration(
-                    labelText: 'Salary',
+                  SizedBox(
+                    height: 40,
                   ),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Your Email',
+                  Text(
+                    "Please Fill The Document",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
                   ),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _phoneController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter your Phone Number',
+                  SizedBox(
+                    height: 40,
                   ),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _qualificationController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Qualification and Skill Required',
+                  TextField(
+                    controller: _typeController,
+                    decoration: const InputDecoration(labelText: 'Job Title'),
                   ),
-                ),
-                TextField(
-                  // keyboardType:
-                  // const TextInputType.numberWithOptions(decimal: true),
-                  controller: _experienceController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Experience Required',
+                  SizedBox(
+                    height: 15,
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  child: const Text('Create'),
-                  onPressed: () async {
-                    final String type = _typeController.text;
-                    final String description = _descriptionController.text;
-                    final String salary = _salaryController.text;
-                    final String email = _emailController.text;
-                    final String phone = _phoneController.text;
-                    final String qualification = _qualificationController.text;
-                    final String experience = _experienceController.text;
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _descriptionController,
+                    decoration: const InputDecoration(
+                      labelText: 'Descriptipn',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _salaryController,
+                    decoration: const InputDecoration(
+                      labelText: 'Salary',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Your Email',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _phoneController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your Phone Number',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _qualificationController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Qualification and Skill Required',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    // keyboardType:
+                    // const TextInputType.numberWithOptions(decimal: true),
+                    controller: _experienceController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Experience Required',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
 
-                    await _jobs.add({
-                      "type": type,
-                      "description": description,
-                      "salary": salary,
-                      "email": email,
-                      "phone": phone,
-                      "qualification": qualification,
-                      "experience": experience,
-                    });
+                  Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                                child: _image == null
+                                    ? const Center(
+                                        child: Text("Select the item image"),
+                                      )
+                                    : Image.file(_image!))
+                          ],
+                        ),
+                      )),
+                  // ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final pick = await imagePicker.pickImage(
+                          source: ImageSource.gallery);
+                      setState(() {
+                        if (pick != null) {
+                          _image = File(pick.path);
+                          _fileName = pick.name;
+                          if (_image != null) {
+                            uploadimg().whenComplete(() => SnackBar(
+                                  content: Text("Picture is selected"),
+                                  duration: Duration(milliseconds: 400),
+                                ));
+                          }
+                        } else {
+                          final snackBar = SnackBar(
+                            content: Text("No image selected"),
+                            duration: Duration(milliseconds: 400),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(primary: Colors.grey),
+                    child: Text(
+                      "Add Image",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
 
-                    _typeController.text = '';
-                    _descriptionController.text = '';
-                    _salaryController.text = '';
-                    _emailController.text = '';
-                    _phoneController.text = '';
-                    _qualificationController.text = '';
-                    _experienceController.text = '';
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      child: const Text('POST'),
+                      onPressed: () async {
+                        Reference ref = FirebaseStorage.instance
+                            .ref('products/')
+                            .child('$_fileName');
+                        await ref.putFile(_image!);
+                        url = await ref.getDownloadURL();
+                        print(url);
+                        FirebaseFirestore firebaseFirestore =
+                            FirebaseFirestore.instance;
+
+                        final String type = _typeController.text;
+                        final String description = _descriptionController.text;
+                        final String salary = _salaryController.text;
+                        final String email = _emailController.text;
+                        final String phone = _phoneController.text;
+                        final String qualification =
+                            _qualificationController.text;
+                        final String experience = _experienceController.text;
+                        final String? img = url;
+
+                        await _jobs.add({
+                          "type": type,
+                          "description": description,
+                          "salary": salary,
+                          "email": email,
+                          "phone": phone,
+                          "qualification": qualification,
+                          "experience": experience,
+                          "img": url,
+                        });
+
+                        _typeController.text = '';
+                        _descriptionController.text = '';
+                        _salaryController.text = '';
+                        _emailController.text = '';
+                        _phoneController.text = '';
+                        _qualificationController.text = '';
+                        _experienceController.text = '';
+                        _imgController.text = '';
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         });
@@ -225,10 +353,13 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
                         MaterialPageRoute(
                             builder: (_) => ProductDetails(documentSnapshot))),
                     child: Card(
-                      color: Colors.grey,
+                      color: Colors.indigo[200],
                       elevation: 7,
                       child: ListTile(
-                        leading: Image.asset("assets/Images/app.png"),
+                        leading: Image.network(
+                          documentSnapshot['img'],
+                          fit: BoxFit.cover,
+                        ),
                         title: Text(
                           documentSnapshot['type'],
                           style: TextStyle(fontSize: 18),

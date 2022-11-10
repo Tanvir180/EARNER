@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:earner_app/auth/on_bording_screen.dart';
+import 'package:earner_app/auth/welcome_screen.dart';
 import 'package:earner_app/pages/select_user.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const SelectUser()));
+          context, MaterialPageRoute(builder: (context) => const Welcomescreen()));
     });
   }
 

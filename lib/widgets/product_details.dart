@@ -26,97 +26,131 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Image.asset("assets/Images/app.png"),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget._product['type'],
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget._product['description'],
-              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget._product['salary'],
-              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
-            ),
-            SizedBox(
-              height: 200,
-            ),
-            Divider(),
-            Row(
-              children: [
-                SizedBox(
-                  width: 15,
+          child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                child: Image.network(
+                  widget._product['img'],
                 ),
-                SizedBox(
-                  width: 150,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String? encodeQueryParameters(
-                          Map<String, String> params) {
-                        return params.entries
-                            .map((MapEntry<String, String> e) =>
-                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                            .join('&');
-                      }
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget._product['type'],
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget._product['description'],
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("Salary"),
+              Text(
+                widget._product['salary'],
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Divider(),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        String? encodeQueryParameters(
+                            Map<String, String> params) {
+                          return params.entries
+                              .map((MapEntry<String, String> e) =>
+                                  '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                              .join('&');
+                        }
 
-// ···
-                      final Uri emailLaunchUri = Uri(
-                        scheme: 'mailto',
-                        path: '$email',
-                        query: encodeQueryParameters(<String, String>{
-                          'subject': 'Application For Job',
-                        }),
-                      );
+                        // ···
+                        final Uri emailLaunchUri = Uri(
+                          scheme: 'mailto',
+                          path: '$email',
+                          query: encodeQueryParameters(<String, String>{
+                            'subject': 'Application For Job',
+                          }),
+                        );
 
-                      launchUrl(emailLaunchUri);
-                    },
-                    child: Text(
-                      "Email",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      //primary: AppColors.deep_orange,
-                      elevation: 3,
+                        launchUrl(emailLaunchUri);
+                      },
+                      child: Text(
+                        "Email",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        //primary: AppColors.deep_orange,
+                        elevation: 3,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 40,
-                ),
-                SizedBox(
+                  SizedBox(
+                    width: 40,
+                  ),
+                  SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        final Uri callLaunchUri = Uri(
+                          scheme: 'tel',
+                          path: '$phone',
+                          // queryParameters: <String, String>{
+                          //   'body': Uri.encodeComponent('Example Subject & Symbols are allowed!'),
+                          // },
+                        );
+                        launchUrl(callLaunchUri);
+                      },
+                      child: Text(
+                        "CALL",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        //primary: AppColors.deep_orange,
+                        foregroundColor: Colors.blueGrey,
+                        elevation: 3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: SizedBox(
                   width: 150,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
-                      final Uri callLaunchUri = Uri(
-                        scheme: 'tel',
-                        path: '$phone',
-                        // queryParameters: <String, String>{
-                        //   'body': Uri.encodeComponent('Example Subject & Symbols are allowed!'),
-                        // },
-                      );
-                      launchUrl(callLaunchUri);
+                    onPressed: () async {
+                      await makePayment();
                     },
                     child: Text(
-                      "CALL",
+                      "Payment",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -129,36 +163,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: SizedBox(
-                width: 150,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    await makePayment();
-                  },
-                  child: Text(
-                    "Payment",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    //primary: AppColors.deep_orange,
-                    foregroundColor: Colors.blueGrey,
-                    elevation: 3,
-                  ),
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       )),
     );
