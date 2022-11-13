@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.earner_app">
    <application
-        android:label="earner_app"
+        android:label="EARNER"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

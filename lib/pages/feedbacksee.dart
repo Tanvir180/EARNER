@@ -86,13 +86,13 @@ class _FeedBackSeeState extends State<FeedBackSee> {
                       // subtitle: Text(documentSnapshot['description']),
                       trailing: SizedBox(
                         width: 100,
-                        child: Row(
-                          children: [
-                            IconButton(
-                                icon: const Icon(Icons.delete),
-                                onPressed: () => _delete(documentSnapshot.id)),
-                          ],
-                        ),
+                        // child: Row(
+                        //   children: [
+                        //     IconButton(
+                        //         icon: const Icon(Icons.delete),
+                        //         onPressed: () => _delete(documentSnapshot.id)),
+                        //   ],
+                        // ),
                       ),
                     ),
                   );

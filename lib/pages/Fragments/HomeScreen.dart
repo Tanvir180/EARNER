@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:earner_app/Theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/searchScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -71,39 +74,26 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 18.0),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Icon(Icons.search),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "Search Jobs..",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Spacer(),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColors.deeppurple,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image(
-                          image: AssetImage("assets/Icons/Ic_Settings.png"),
-                          height: 40,
-                          color: AppColors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: TextFormField(
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(color: Colors.blue)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(color: Colors.grey)),
+                    hintText: "Search Job",
+                    hintStyle: TextStyle(fontSize: 15),
+                  ),
+                  onTap: () => Navigator.push(context,
+                      CupertinoPageRoute(builder: (_) => SearchScreen())),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               SizedBox(
                 height: 15,
