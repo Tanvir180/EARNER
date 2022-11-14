@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 
-class BookmarkScreen extends StatefulWidget {
-  const BookmarkScreen({Key? key}) : super(key: key);
+class BookmarkScreenBuyer extends StatefulWidget {
+  const BookmarkScreenBuyer({Key? key}) : super(key: key);
 
   @override
-  State<BookmarkScreen> createState() => _BookmarkScreenState();
+  State<BookmarkScreenBuyer> createState() => _BookmarkScreenBuyerState();
 }
 
-class _BookmarkScreenState extends State<BookmarkScreen> {
+class _BookmarkScreenBuyerState extends State<BookmarkScreenBuyer> {
   Map<String, dynamic>? paymentIntent;
 
   @override

@@ -13,14 +13,14 @@ import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 
-class JobsScreen extends StatefulWidget {
-  const JobsScreen({Key? key}) : super(key: key);
+class JobsScreenBuyer extends StatefulWidget {
+  const JobsScreenBuyer({Key? key}) : super(key: key);
 
   @override
-  State<JobsScreen> createState() => _JobsScreenState();
+  State<JobsScreenBuyer> createState() => _JobsScreenBuyerState();
 }
 
-class _JobsScreenState extends State<JobsScreen> {
+class _JobsScreenBuyerState extends State<JobsScreenBuyer> {
   File? _image;
   final imagePicker = ImagePicker();
   String? url;

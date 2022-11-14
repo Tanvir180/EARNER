@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/home_page.dart';
+import 'package:earner_app/pages/Fragments_buyer/home_page.dart';
+import 'package:earner_app/pages/Fragments_seller/home_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -50,7 +52,7 @@ class _AddWorkPagesellerState extends State<AddWorkPageseller> {
           "experience": _workingPeriodEditingController.text,
         })
         .then((value) => Navigator.push(
-            context, MaterialPageRoute(builder: (_) => DashBoard())))
+            context, MaterialPageRoute(builder: (_) => DashBoardseller())))
         .catchError((error) => print("something is wrong. $error"));
   }
 

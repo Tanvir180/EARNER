@@ -1,17 +1,17 @@
-import 'package:earner_app/pages/home_page.dart';
-import 'package:earner_app/pages/registration_page.dart';
+import 'package:earner_app/pages/Fragments_seller/home_page.dart';
+import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPageBuyer extends StatefulWidget {
+  const LoginPageBuyer({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPageBuyer> createState() => _LoginPageBuyerState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageBuyerState extends State<LoginPageBuyer> {
   // form key
   final _formKey = GlobalKey<FormState>();
 
@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const RegistrationPage(),
+                                      const RegistrationPageseller(),
                                 ),
                               );
                             },
@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
             .then((uid) => {
                   Fluttertoast.showToast(msg: "Login Successful"),
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) =>  const DashBoard())),
+                      MaterialPageRoute(builder: (context) =>  const DashBoardseller())),
                 });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {

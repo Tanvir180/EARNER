@@ -2,12 +2,18 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/Fragments/AlertsScreen.dart';
-import 'package:earner_app/pages/Fragments/payment.dart';
-import 'package:earner_app/pages/Fragments/ChatScreen.dart';
-import 'package:earner_app/pages/Fragments/HomeScreen.dart';
-import 'package:earner_app/pages/Fragments/JobsScreen.dart';
-import 'package:earner_app/pages/login_page.dart';
+import 'package:earner_app/pages/Fragments_buyer/AlertsScreen.dart';
+import 'package:earner_app/pages/Fragments_buyer/payment.dart';
+import 'package:earner_app/pages/Fragments_buyer/ChatScreen.dart';
+import 'package:earner_app/pages/Fragments_buyer/HomeScreen.dart';
+import 'package:earner_app/pages/Fragments_buyer/JobsScreen.dart';
+import 'package:earner_app/pages/Fragments_seller/AlertsScreen.dart';
+import 'package:earner_app/pages/Fragments_seller/ChatScreen.dart';
+import 'package:earner_app/pages/Fragments_seller/HomeScreen.dart';
+import 'package:earner_app/pages/Fragments_seller/JobsScreen.dart';
+import 'package:earner_app/pages/Fragments_seller/drawer.dart';
+import 'package:earner_app/pages/Fragments_seller/payment.dart';
+
 import 'package:earner_app/widgets/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,29 +23,29 @@ import 'package:flutter/material.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class DashBoardBuyer extends StatefulWidget {
+  const DashBoardBuyer({Key? key}) : super(key: key);
 
   @override
-  State<DashBoard> createState() => _DashBoardState();
+  State<DashBoardBuyer> createState() => _DashBoardBuyerState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _DashBoardBuyerState extends State<DashBoardBuyer> {
   int selectedIndex = 0;
 
   Widget getFragment() {
     if (selectedIndex == 0) {
-      return const HomeScreen();
+      return const HomeScreenBuyer();
     } else if (selectedIndex == 1) {
-      return const AlertsScreen();
+      return const AlertsScreenBuyer();
     } else if (selectedIndex == 2) {
-      return const JobsScreen();
+      return const JobsScreenBuyer();
     } else if (selectedIndex == 3) {
-      return const BookmarkScreen();
+      return const BookmarkScreenBuyer();
     } else if (selectedIndex == 4) {
-      return const AddWorkPage();
+      return const AddWorkPageBuyer();
     }
-    return const HomeScreen();
+    return const HomeScreenBuyer();
   }
 
   @override
@@ -56,7 +62,7 @@ class _DashBoardState extends State<DashBoard> {
           "EARNER",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.cyan,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,

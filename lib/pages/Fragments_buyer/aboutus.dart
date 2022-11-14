@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:earner_app/Services/global_variables.dart';
+import 'package:earner_app/pages/Fragments_seller/drawer.dart';
 import 'package:earner_app/pages/Fragments_seller/login_page.dart';
-import 'package:earner_app/pages/login_page.dart';
+
 import 'package:earner_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 //import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class AboutUs extends StatefulWidget {

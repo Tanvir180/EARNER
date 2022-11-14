@@ -2,14 +2,14 @@ import 'package:earner_app/Theme.dart';
 import 'package:flutter/material.dart';
 
 
-class AlertsScreen extends StatefulWidget {
-  const AlertsScreen({Key? key}) : super(key: key);
+class AlertsScreenBuyer extends StatefulWidget {
+  const AlertsScreenBuyer({Key? key}) : super(key: key);
 
   @override
-  State<AlertsScreen> createState() => _AlertsScreenState();
+  State<AlertsScreenBuyer> createState() => _AlertsScreenBuyerState();
 }
 
-class _AlertsScreenState extends State<AlertsScreen> {
+class _AlertsScreenBuyerState extends State<AlertsScreenBuyer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

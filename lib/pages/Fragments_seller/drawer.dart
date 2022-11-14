@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/Fragments_buyer/home_page.dart';
+import 'package:earner_app/pages/Fragments_seller/aboutus.dart';
+import 'package:earner_app/pages/Fragments_seller/feedback.dart';
 import 'package:earner_app/pages/Fragments_seller/home_page.dart';
+import 'package:earner_app/pages/Fragments_seller/login_page.dart';
 import 'package:earner_app/pages/Fragments_seller/profileSeller.dart';
-import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
-import 'package:earner_app/pages/aboutus.dart';
-import 'package:earner_app/pages/feedback.dart';
-import 'package:earner_app/pages/login_page.dart';
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -14,14 +16,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 
-class MyDrawerseller extends StatefulWidget {
-  const MyDrawerseller({Key? key}) : super(key: key);
+class MyDrawer extends StatefulWidget {
+  const MyDrawer({Key? key}) : super(key: key);
 
   @override
-  State<MyDrawerseller> createState() => _MyDrawersellerState();
+  State<MyDrawer> createState() => _MyDrawerState();
 }
 
-class _MyDrawersellerState extends State<MyDrawerseller> {
+class _MyDrawerState extends State<MyDrawer> {
   Map<String, dynamic>? paymentIntent;
 
   User? user = FirebaseAuth.instance.currentUser;
@@ -68,7 +70,7 @@ class _MyDrawersellerState extends State<MyDrawerseller> {
                       fontWeight: FontWeight.w500,
                     )),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/app.png"),
+                  backgroundImage: NetworkImage("${loggedInUser.img}"),
                 ),
               ),
             ),
@@ -206,6 +208,6 @@ class _MyDrawersellerState extends State<MyDrawerseller> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPage()));
+        MaterialPageRoute(builder: (context) => const LoginPageseller()));
   }
 }

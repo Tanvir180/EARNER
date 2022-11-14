@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/feedbacksee.dart';
+import 'package:earner_app/pages/Fragments_seller/feedbacksee.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

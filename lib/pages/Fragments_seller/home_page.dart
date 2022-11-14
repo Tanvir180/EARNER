@@ -1,19 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
-import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/Fragments/AlertsScreen.dart';
-import 'package:earner_app/pages/Fragments/payment.dart';
-import 'package:earner_app/pages/Fragments/ChatScreen.dart';
-import 'package:earner_app/pages/Fragments/HomeScreen.dart';
-import 'package:earner_app/pages/Fragments/JobsScreen.dart';
+
 import 'package:earner_app/pages/Fragments_seller/AlertsScreen.dart';
 import 'package:earner_app/pages/Fragments_seller/ChatScreen.dart';
 import 'package:earner_app/pages/Fragments_seller/HomeScreen.dart';
 import 'package:earner_app/pages/Fragments_seller/JobsScreen.dart';
 import 'package:earner_app/pages/Fragments_seller/drawer.dart';
 import 'package:earner_app/pages/Fragments_seller/payment.dart';
-import 'package:earner_app/pages/login_page.dart';
+
 import 'package:earner_app/widgets/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +71,7 @@ class _DashBoardsellerState extends State<DashBoardseller> {
         ],
       ),
       drawer: const Drawer(
-        child: MyDrawerseller(),
+        child: MyDrawer(),
       ),
       body: getFragment(),
 

@@ -1,6 +1,6 @@
 import 'package:earner_app/Theme.dart';
 import 'package:flutter/material.dart';
-import 'package:earner_app/pages/Fragments/JobsScreen.dart';
+import 'package:earner_app/pages/Fragments_buyer/JobsScreen.dart';
 
 class Jobs_Models extends StatelessWidget {
   const Jobs_Models({Key? key}) : super(key: key);

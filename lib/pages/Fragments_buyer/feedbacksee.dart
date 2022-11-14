@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
+import 'package:earner_app/pages/Fragments_seller/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../widgets/drawer.dart';
+
 
 class FeedBackSee extends StatefulWidget {
   const FeedBackSee({super.key});

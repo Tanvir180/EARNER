@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/feedbacksee.dart';
+import 'package:earner_app/pages/Fragments_buyer/feedbacksee.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileBuyer extends StatefulWidget {
+  const ProfileBuyer({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileBuyer> createState() => _ProfileBuyerState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileBuyerState extends State<ProfileBuyer> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 

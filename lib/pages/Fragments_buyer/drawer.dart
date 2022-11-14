@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/Fragments_seller/home_page.dart';
+import 'package:earner_app/pages/Fragments_buyer/aboutus.dart';
+import 'package:earner_app/pages/Fragments_buyer/feedback.dart';
+import 'package:earner_app/pages/Fragments_buyer/home_page.dart';
+import 'package:earner_app/pages/Fragments_buyer/login_page.dart';
 import 'package:earner_app/pages/Fragments_seller/profileSeller.dart';
-import 'package:earner_app/pages/Fragments_seller/registration_page.dart';
-import 'package:earner_app/pages/aboutus.dart';
-import 'package:earner_app/pages/feedback.dart';
-import 'package:earner_app/pages/login_page.dart';
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -14,14 +15,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 
-class MyDrawer extends StatefulWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+class MyDrawerBuyer extends StatefulWidget {
+  const MyDrawerBuyer({Key? key}) : super(key: key);
 
   @override
-  State<MyDrawer> createState() => _MyDrawerState();
+  State<MyDrawerBuyer> createState() => _MyDrawerBuyerState();
 }
 
-class _MyDrawerState extends State<MyDrawer> {
+class _MyDrawerBuyerState extends State<MyDrawerBuyer> {
   Map<String, dynamic>? paymentIntent;
 
   User? user = FirebaseAuth.instance.currentUser;
@@ -68,7 +69,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       fontWeight: FontWeight.w500,
                     )),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/app.png"),
+                  backgroundImage: NetworkImage("${loggedInUser.img}"),
                 ),
               ),
             ),
@@ -82,7 +83,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const DashBoardseller(),
+                      builder: (context) => const DashBoardBuyer(),
                     ),
                   );
                 },
@@ -206,6 +207,6 @@ class _MyDrawerState extends State<MyDrawer> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPage()));
+        MaterialPageRoute(builder: (context) => const LoginPageBuyer()));
   }
 }

@@ -1,18 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/home_page.dart';
+import 'package:earner_app/pages/Fragments_buyer/home_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class AddWorkPage extends StatefulWidget {
-  const AddWorkPage({Key? key}) : super(key: key);
+class AddWorkPageBuyer extends StatefulWidget {
+  const AddWorkPageBuyer({Key? key}) : super(key: key);
 
   @override
-  State<AddWorkPage> createState() => _AddWorkPageState();
+  State<AddWorkPageBuyer> createState() => _AddWorkPageBuyerState();
 }
 
-class _AddWorkPageState extends State<AddWorkPage> {
+class _AddWorkPageBuyerState extends State<AddWorkPageBuyer> {
   TextEditingController _jobNameEditingController = TextEditingController();
   TextEditingController _descriptionEditingController = TextEditingController();
   TextEditingController _salaryEditingController = TextEditingController();
@@ -50,7 +51,7 @@ class _AddWorkPageState extends State<AddWorkPage> {
           "experience": _workingPeriodEditingController.text,
         })
         .then((value) => Navigator.push(
-            context, MaterialPageRoute(builder: (_) => DashBoard())))
+            context, MaterialPageRoute(builder: (_) => DashBoardBuyer())))
         .catchError((error) => print("something is wrong. $error"));
   }
 

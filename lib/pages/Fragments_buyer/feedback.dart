@@ -1,15 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:earner_app/Services/global_variables.dart';
+import 'package:earner_app/pages/Fragments_seller/drawer.dart';
+import 'package:earner_app/pages/Fragments_seller/home_page.dart';
 import 'package:earner_app/widgets/drawer.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/model/user_model.dart';
-import 'package:earner_app/pages/home_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+
 
 class FeedBack extends StatefulWidget {
   const FeedBack({super.key});
@@ -89,7 +93,7 @@ class _FeedBackState extends State<FeedBack> with TickerProviderStateMixin {
           // "experience": _workingPeriodEditingController.text,
         })
         .then((value) => Navigator.push(
-            context, MaterialPageRoute(builder: (_) => DashBoard())))
+            context, MaterialPageRoute(builder: (_) => DashBoardseller())))
         .catchError((error) => print("something is wrong. $error"));
   }
 

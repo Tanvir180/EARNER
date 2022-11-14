@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:earner_app/Services/global_variables.dart';
+import 'package:earner_app/pages/Fragments_buyer/login_page.dart';
 import 'package:earner_app/pages/Fragments_seller/login_page.dart';
-import 'package:earner_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 //import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -119,7 +119,7 @@ class _SelectUserState extends State<SelectUser> with TickerProviderStateMixin {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const LoginPage(),
+              builder: (context) => const LoginPageBuyer(),
             ),
           );
         },

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/searchScreen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenBuyer extends StatefulWidget {
+  const HomeScreenBuyer({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenBuyer> createState() => _HomeScreenBuyerState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenBuyerState extends State<HomeScreenBuyer> {
   @override
   Widget build(BuildContext context) {
     final List<String> imgList = [

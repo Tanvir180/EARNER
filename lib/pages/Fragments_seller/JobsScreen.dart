@@ -1,6 +1,10 @@
 import 'dart:io';
 import 'dart:ui';
-
+import 'package:earner_app/widgets/notification.dart';
+import 'package:flutter/material.dart';
+// import 'package:localnotificationflutter/notificationservice.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earner_app/Theme.dart';
 import 'package:earner_app/model/Jobs_Models.dart';
@@ -21,6 +25,13 @@ class JobsScreenseller extends StatefulWidget {
 }
 
 class _JobsScreensellerState extends State<JobsScreenseller> {
+  @override
+  void initState() {
+    super.initState();
+
+    tz.initializeTimeZones();
+  }
+
   File? _image;
   final imagePicker = ImagePicker();
   String? url;
@@ -215,6 +226,8 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
                     child: ElevatedButton(
                       child: const Text('POST'),
                       onPressed: () async {
+                        // NotificationService()
+                        //     .showNotification(1, "New Job Post", "body", 2);
                         Reference ref = FirebaseStorage.instance
                             .ref('products/')
                             .child('$_fileName');
@@ -254,6 +267,11 @@ class _JobsScreensellerState extends State<JobsScreenseller> {
                         _experienceController.text = '';
                         _imgController.text = '';
                         Navigator.of(context).pop();
+                        NotificationService().showNotification(
+                            5,
+                            "New Job Post!!!!!",
+                            "Job Type: $type\n Description:  $description",
+                            10);
                       },
                     ),
                   )
